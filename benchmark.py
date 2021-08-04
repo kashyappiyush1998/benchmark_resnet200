@@ -22,7 +22,7 @@ from timm.models import create_model, is_model, list_models
 from timm.optim import create_optimizer_v2
 from timm.data import resolve_data_config
 from timm.utils import AverageMeter, setup_default_logging
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 has_apex = False
 try:
@@ -51,7 +51,7 @@ parser.add_argument('--bench', default='both', type=str,
                     help="Benchmark mode. One of 'inference', 'train', 'both'. Defaults to 'both'")
 parser.add_argument('--detail', action='store_true', default=True,
                     help='Provide train fwd/bwd/opt breakdown detail if True. Defaults to False')
-parser.add_argument('--results-file', default='Restnet-200-4600imgs-112size-1gpu.csv', type=str, metavar='FILENAME',
+parser.add_argument('--results-file', default='Restnet-200-2000imgs-224size-1gpu.csv', type=str, metavar='FILENAME',
                     help='Output csv file for validation results (summary)')
 parser.add_argument('--num-warm-iter', default=10, type=int,
                     metavar='N', help='Number of warmup iterations (default: 10)')
@@ -61,9 +61,9 @@ parser.add_argument('--num-bench-iter', default=1000, type=int,
 # common inference / train args
 parser.add_argument('--model', '-m', metavar='NAME', default='resnet200',
                     help='model architecture (default: resnet200)')
-parser.add_argument('-b', '--batch-size', default=4600, type=int,
+parser.add_argument('-b', '--batch-size', default=2000, type=int,
                     metavar='N', help='mini-batch size (default: 256)')
-parser.add_argument('--img-size', default=112, type=int,
+parser.add_argument('--img-size', default=224, type=int,
                     metavar='N', help='Input image dimension, uses model default if empty')
 parser.add_argument('--input-size', default=None, nargs=3, type=int,
                     metavar='N N N', help='Input all image dimensions (d h w, e.g. --input-size 3 224 224), uses model default if empty')
