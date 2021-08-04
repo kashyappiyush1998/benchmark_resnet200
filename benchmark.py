@@ -164,7 +164,8 @@ class BenchmarkRunner:
             device=self.device,
             dtype=self.model_dtype,
             memory_format=torch.channels_last if self.channels_last else None)
-        self.num_classes = self.model.num_classes
+            
+        self.num_classes = self.model.module.num_classes
         self.param_count = count_params(self.model)
         _logger.info('Model %s created, param count: %d' % (model_name, self.param_count))
         if torchscript:
