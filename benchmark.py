@@ -179,7 +179,7 @@ class BenchmarkRunner:
         self.num_warm_iter = num_warm_iter
         self.num_bench_iter = num_bench_iter
         self.log_freq = num_bench_iter // 5
-        if 'cuda' in self.device:
+        if torch.device('cuda')==self.device:
             self.time_fn = partial(cuda_timestamp, device=self.device)
         else:
             self.time_fn = timestamp
