@@ -51,7 +51,7 @@ parser.add_argument('--bench', default='both', type=str,
                     help="Benchmark mode. One of 'inference', 'train', 'both'. Defaults to 'both'")
 parser.add_argument('--detail', action='store_true', default=True,
                     help='Provide train fwd/bwd/opt breakdown detail if True. Defaults to False')
-parser.add_argument('--results-file', default='Restnet-200-4096imgs-112size-1gpu.csv', type=str, metavar='FILENAME',
+parser.add_argument('--results-file', default='Restnet-200-4500imgs-112size-1gpu.csv', type=str, metavar='FILENAME',
                     help='Output csv file for validation results (summary)')
 parser.add_argument('--num-warm-iter', default=10, type=int,
                     metavar='N', help='Number of warmup iterations (default: 10)')
@@ -61,7 +61,7 @@ parser.add_argument('--num-bench-iter', default=1000, type=int,
 # common inference / train args
 parser.add_argument('--model', '-m', metavar='NAME', default='resnet200',
                     help='model architecture (default: resnet200)')
-parser.add_argument('-b', '--batch-size', default=4096, type=int,
+parser.add_argument('-b', '--batch-size', default=4500, type=int,
                     metavar='N', help='mini-batch size (default: 256)')
 parser.add_argument('--img-size', default=112, type=int,
                     metavar='N', help='Input image dimension, uses model default if empty')
