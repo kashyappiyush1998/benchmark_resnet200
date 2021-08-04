@@ -22,7 +22,7 @@ from timm.models import create_model, is_model, list_models
 from timm.optim import create_optimizer_v2
 from timm.data import resolve_data_config
 from timm.utils import AverageMeter, setup_default_logging
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 has_apex = False
 try:
@@ -61,7 +61,7 @@ parser.add_argument('--num-bench-iter', default=1000, type=int,
 # common inference / train args
 parser.add_argument('--model', '-m', metavar='NAME', default='resnet200',
                     help='model architecture (default: resnet200)')
-parser.add_argument('-b', '--batch-size', default=2200, type=int,
+parser.add_argument('-b', '--batch-size', default=4400, type=int,
                     metavar='N', help='mini-batch size (default: 256)')
 parser.add_argument('--img-size', default=224, type=int,
                     metavar='N', help='Input image dimension, uses model default if empty')
