@@ -145,7 +145,7 @@ class BenchmarkRunner:
             num_warm_iter=10, num_bench_iter=50, **kwargs):
         self.model_name = model_name
         self.detail = detail
-        self.device = device
+        self.device = torch.device("cuda")
         self.use_amp, self.model_dtype, self.data_dtype = resolve_precision(precision)
         self.channels_last = kwargs.pop('channels_last', False)
         self.amp_autocast = torch.cuda.amp.autocast if self.use_amp else suppress
@@ -157,8 +157,9 @@ class BenchmarkRunner:
             global_pool=kwargs.pop('gp', 'fast'),
             scriptable=torchscript)
         
-        self.model= nn.DataParallel(self.model, device_ids = [0, 1])
+        self.model= nn.DataParallel(self.model)
 
+        print("Using", torch.cuda.device_count(), "GPUs")
         self.model.to(
             device=self.device,
             dtype=self.model_dtype,
