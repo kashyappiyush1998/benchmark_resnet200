@@ -145,7 +145,7 @@ class BenchmarkRunner:
             num_warm_iter=10, num_bench_iter=50, **kwargs):
         self.model_name = model_name
         self.detail = detail
-        self.device = torch.device("cuda:0,1")
+        self.device = device
         self.use_amp, self.model_dtype, self.data_dtype = resolve_precision(precision)
         self.channels_last = kwargs.pop('channels_last', False)
         self.amp_autocast = torch.cuda.amp.autocast if self.use_amp else suppress
