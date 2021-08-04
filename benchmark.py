@@ -22,7 +22,7 @@ from timm.models import create_model, is_model, list_models
 from timm.optim import create_optimizer_v2
 from timm.data import resolve_data_config
 from timm.utils import AverageMeter, setup_default_logging
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 has_apex = False
 try:
